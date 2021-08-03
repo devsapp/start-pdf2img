@@ -1,0 +1,2 @@
+RUNTIME nodejs12
+RUN fun-install apt-get install ghostscript graphicsmagick

@@ -2,6 +2,9 @@
 # Created by https://www.toptal.com/developers/gitignore/api/yarn,node,npm
 # Edit at https://www.toptal.com/developers/gitignore?templates=yarn,node,npm
 
+### ServerlessDevs ###
+.s
+
 ### Node ###
 # Logs
 logs

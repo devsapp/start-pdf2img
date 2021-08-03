@@ -75,6 +75,5 @@ s invoke
 ```
 
 ## 参考
-
-[awesome-fc/ghostscript_example: 基于 GhostScript 的 PDF 转 JPG Serverless 示例项目 (github.com)](https://github.com/awesome-fc/ghostscript_example)
-
+- [awesome-fc/ghostscript_example: 基于 GhostScript 的 PDF 转 JPG Serverless 示例项目 (github.com)](https://github.com/awesome-fc/ghostscript_example)
+- [Node module - pdf2pic](https://www.npmjs.com/package/pdf2pic)

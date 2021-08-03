@@ -1,10 +1,10 @@
 Type: Application
-Name: PDF2JPG
+Name: PDF2IMG
 Provider:
   - 阿里云
 Version: 1.0
 Description: 将PDF转换为JPG图片
-HomePage: https://github.com/JasonLamv-t/serverless-devs-pdf2jpg
+HomePage: https://github.com/devsapp/start-pdf2img
 Tags: 
   - 文件处理
 Category: 图文处理

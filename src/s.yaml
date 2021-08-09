@@ -1,18 +1,18 @@
 edition: 1.0.0          #  命令行YAML规范版本，遵循语义化版本（Semantic Versioning）规范
-name: pdf2jpg       #  项目名称
+name: pdf2img       #  项目名称
 access: default  #  秘钥别名
 
 services:
-  pdf2jpg: #  服务名称
+  pdf2img: #  服务名称
     component: fc  # 组件名称
     props: #  组件的属性值
       region: cn-shenzhen
       service:
-        name: pdf2jpg
-        description: PDF转JPG工具
+        name: pdf2img
+        description: PDF转IMG工具
       function:
-        name: ghostscript
-        description: 基于ghostscript实现
+        name: node-pdf2jpg
+        description: 
         codeUri: ./
         handler: index.handler
         memorySize: 128

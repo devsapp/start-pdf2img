@@ -36,7 +36,7 @@ yarn global add  @serverless-devs/s
 
 ### 初始化项目
 
-执行`s init https://github.com/JasonLamv-t/serverless-devs-ghostscript_example.git`来初始化项目，并修改s.yaml中的access字段为您自己的密钥别名。
+执行`s init devsapp/start-pdf2img`来初始化项目，并修改s.yaml中的access字段为您自己的密钥别名。
 
 ### 安装依赖并构建
 

@@ -9,13 +9,13 @@
 如果您的开发环境没有Serverless-Devs，如果您的开发环境具备[npm](https://www.npmjs.com/)，可执行以下命令进行安装：
 
 ```bash
-npm install  @serverless-devs/s -g
+npm install @serverless-devs/s -g
 ```
 
 或者 通过 [yarn](https://yarnpkg.com/) 进行安装
 
 ```bash
-yarn global add  @serverless-devs/s
+yarn global add @serverless-devs/s
 ```
 
 更多内容请参考[Serverless Devs Install-tutorial](https://github.com/devsapp/fc/blob/main/docs/Getting-started/Install-tutorial.md)。
@@ -36,23 +36,24 @@ yarn global add  @serverless-devs/s
 
 ### 初始化项目
 
-执行`s init devsapp/start-pdf2img`来初始化项目，并修改s.yaml中的access字段为您自己的密钥别名。
-
-### 安装依赖并构建
+通过一下语句执行初始化，并进入您的项目
 
 ```bash
-s build
+s init devsapp/start-pdf2img
+cd 	'your-project-dir'
 ```
 
-> 本项目依赖于Ghostscript及GraphicsMagick，通过Funfile及s.yaml配置，您只需执行s build构建本项目代码即可获得一致环境
+### 安装依赖
 
-### 添加测试文件
-
-在项目目录下添加一个名为「test.pdf」的测试文件。本项目已经自带了一个测试文件，您可以根据自己的需求进行替换
+```bash
+npm i / yarn # 若您初始化时未安装依赖，则需要手动安装依赖
+```
 
 ### 构建Runtime并安装依赖
 
 执行`s build`，S检测到项目中存在「Funfile」时将会以Custom Runtime模式构建并安装依赖，得到`Build artifact successfully`时说明构建成功。
+
+> 本项目依赖于Ghostscript及GraphicsMagick，通过Funfile及s.yaml配置，您只需执行s build构建本项目代码即可获得一致环境
 
 ### 本地调用
 

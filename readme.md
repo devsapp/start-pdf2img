@@ -46,7 +46,7 @@ cd 	'your-project-dir'
 ### 安装依赖
 
 ```bash
-npm i / yarn # 若您初始化时未安装依赖，则需要手动安装依赖
+npm i # or 'yarn' 若您初始化时未安装依赖，则需要手动安装依赖
 ```
 
 ### 构建Runtime并安装依赖

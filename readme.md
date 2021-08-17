@@ -1,4 +1,4 @@
-# Serverless-Devs 基于 GS 和 GM  的 PDF 转 JPG 实践
+# Serverless-Devs 基于 GS 和 GM 的 PDF 转 JPG 实践
 
 该项目是基于NodeJS的PDF转JPG工具，借助[Serverless-Devs](https://github.com/Serverless-Devs/Serverless-Devs/blob/master/readme_zh.md)工具进行依赖安装并部署到阿里云函数计算，是一个serverless的简单示例。本项目依赖于GhostScript和GraphicsMagick，您也可以在本项目的基础上开发您的应用。
 

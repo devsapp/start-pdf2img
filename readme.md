@@ -40,7 +40,7 @@ yarn global add @serverless-devs/s
 
 ```bash
 s init devsapp/start-pdf2img
-cd 	'your-project-dir'
+cd 'your-project-dir'
 ```
 
 ### 安装依赖

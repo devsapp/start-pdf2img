@@ -39,8 +39,8 @@ yarn global add @serverless-devs/s
 通过一下语句执行初始化，并进入您的项目
 
 ```bash
-s init devsapp/start-pdf2img
-cd 'your-project-dir'
+s init start-pdf2img
+cd start-pdf2img
 ```
 
 ### 安装依赖

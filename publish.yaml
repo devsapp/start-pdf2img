@@ -9,7 +9,7 @@ Tags:
   - 文件处理
 Category: 图文处理
 Service: 
-  - Name: 函数计算
-    Runtime: Node.JS 如果服务是函数，还需要增加Runtime
+  函数计算:
+    Runtime: Node.JS
     Authorities: #权限描述
       - 创建函数 # 所需要的权限

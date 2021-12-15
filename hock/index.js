@@ -1,8 +1,4 @@
 async function preInit(inputObj) {
-
-}
-
-async function postInit(inputObj) {
     console.log(`
         ____  ____  _________   ______  _________
        / __ \\/ __ \\/ ____/__ \\ /  _/  |/  / ____/
@@ -11,12 +7,16 @@ async function postInit(inputObj) {
     /_/   /_____/_/    /____/___/_/  /_/\\____/   
                                              
 `)
-    console.log(`\n    Welcome to the start-pdf2img application
+}
+
+async function postInit(inputObj) {
+    console.log(`\n    Welcome to the start-bottle application
      This application requires to open these services: 
          FC : https://fc.console.aliyun.com/
-     This application can help you quickly deploy the an application that can convert pdf into an image.
-     This application has a GhostScript & GraphicsMagick environment, and you can develop it on the basis of this application.
-     This application homepage: https://github.com/devsapp/start-pdf2img\n`)
+     
+     * 额外说明：
+     * 进行项目之后，可使用 s deploy 进行项目部署
+     * 可以通过invoke命令进行相关的触发：s invoke\n`)
 }
 
 module.exports = {

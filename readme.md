@@ -1,81 +1,65 @@
-# Serverless-Devs 基于 GS 和 GM 的 PDF 转 JPG 实践
+# Pdf2Img App
 
-该项目是基于NodeJS的PDF转JPG工具，借助[Serverless-Devs](https://github.com/Serverless-Devs/Serverless-Devs/blob/master/readme_zh.md)工具进行依赖安装并部署到阿里云函数计算，是一个serverless的简单示例。本项目依赖于GhostScript和GraphicsMagick，您也可以在本项目的基础上开发您的应用。
+> 快速部署和体验Serverless架构下的PDF转图片的应用
 
-## 开始之前
+- [Pdf2Img App](#pdf2img-app)
+  - [体验前准备](#体验前准备)
+  - [代码](#代码)
+  - [快速部署和体验](#快速部署和体验)
+    - [在线快速体验](#在线快速体验)
+    - [在本地部署体验](#在本地部署体验)
+  - [项目使用注意事项](#项目使用注意事项)
+  - [应用详情](#应用详情)
 
-### Serverless-Devs
+## 体验前准备
 
-如果您的开发环境没有Serverless-Devs，如果您的开发环境具备[npm](https://www.npmjs.com/)，可执行以下命令进行安装：
+该应用案例，需要您开通[阿里云函数计算](https://fcnext.console.aliyun.com/) 产品；并建议您当前的账号有一下权限存在`FCDefaultRole`。
 
-```bash
-npm install @serverless-devs/s -g
-```
+## 代码
 
-或者 通过 [yarn](https://yarnpkg.com/) 进行安装
+- [:octocat: 源代码](https://github.com/devsapp/start-pdf2img/tree/master/src)
 
-```bash
-yarn global add @serverless-devs/s
-```
+## 快速部署和体验
+### 在线快速体验
 
-更多内容请参考[Serverless Devs Install-tutorial](https://github.com/devsapp/fc/blob/main/docs/Getting-started/Install-tutorial.md)。
+- 通过阿里云 **Serverless 应用中心**： 可以点击 [【🚀 部署】](https://fcnext.console.aliyun.com/applications/create?clone_url=https://github.com/huangfushan/hfs-test-5.git) ，按照引导填入参数，快速进行部署和体验。
 
-### Docker
+<!-- mark, cloudshell 不支持 s build - 通过阿里云 **CloudShell**：可以点击 [【🏄 部署】](https://api.aliyun.com/new#/tutorial?action=git_open&git_repo=https://github.com/devsapp/devsapp-cloudshell-example.git&tutorial=tutorial/start-pdf2img.md) ，按照引导填入参数，快速进行部署和体验。 -->
 
-本文档涉及本地调试，因此需要开发环境具有[Docker](https://www.docker.com/)，您可根据您开发平台的不同安装不同版本，可参考[Serverless Devs Install-tutorial](https://github.com/devsapp/fc/blob/main/docs/Getting-started/Install-tutorial.md)可选部分。
 
-### Aliyun RAM账号
+### 在本地部署体验
 
-前往[RAM 访问控制](https://ram.console.aliyun.com/users)创建一个子用户，赋予其管理函数计算(FC)服务权限「AliyunFCFullAccess」并创建AccessKey。
+1. 下载安装 Serverless Devs：`npm install @serverless-devs/s` 
+    > 详细文档可以参考 [Serverless Devs 安装文档](https://github.com/Serverless-Devs/Serverless-Devs/blob/master/docs/zh/install.md)
+2. 配置密钥信息：`s config add`
+    > 详细文档可以参考 [阿里云密钥配置文档](https://github.com/devsapp/fc/blob/main/docs/zh/config.md)
+3. 初始化项目：`s init start-pdf2img -d start-pdf2img`
+4. 进入项目并部署：`cd start-pdf2img && s deploy`
 
-### Serverless-Devs密钥配置
+> 在本地使用该项目时，不仅可以部署，还可以进行更多的操作，例如查看日志，查看指标，进行多种模式的调试等，这些操作详情可以参考[函数计算组件命令文档](https://github.com/devsapp/fc#%E6%96%87%E6%A1%A3%E7%9B%B8%E5%85%B3) ;
 
-参考[配置阿里云密钥](https://github.com/devsapp/fc/blob/main/docs/Getting-started/Setting-up-credentials.md)及[S config](http://www.serverless-devs.com/docs/command#config指令)，将上一步创建的子用户AccessKey配置到S中。
+## 项目使用注意事项
 
-## 开发
+项目Yaml中，声明了`actions`， 其对应的命令作用是 deploy 之前自动安装第三方依赖库， 同时 s deploy 部署的时候， 会自动增加相关的环境变量， 让您函数执行的时候能自动找到相关的依赖库。
 
-### 初始化项目
+## 应用详情
 
-通过一下语句执行初始化，并进入您的项目
+本应用是将 PDF 转 JPG 图片示例部署到阿里云函数计算（FC)。
 
-```bash
-s init start-pdf2img
-cd start-pdf2img
-```
+通过 Serverless Devs 开发者工具，您只需要几步，就可以体验 Serverless 架构，带来的降本提效的技术红利。
 
-### 安装依赖
+部署完成之后，您可以看到系统返回给您的案例地址，例如：
 
-```bash
-npm i # or 'yarn' 若您初始化时未安装依赖，则需要手动安装依赖
-```
+![图片alt](https://img.alicdn.com/imgextra/i2/O1CN01FAltos1wqTJpEkTTR_!!6000000006359-2-tps-1776-584.png)
 
-### 构建Runtime并安装依赖
-
-执行`s build`，S检测到项目中存在「Funfile」时将会以Custom Runtime模式构建并安装依赖，得到`Build artifact successfully`时说明构建成功。
-
-> 本项目依赖于Ghostscript及GraphicsMagick，通过Funfile及s.yaml配置，您只需执行s build构建本项目代码即可获得一致环境
-
-### 本地调用
+此时，可以 curl 调用函数， 然后可以得到一个 zip 包， zip 包里面是 pdf 每页截图的 jpg 文件
 
 ```bash
-s local invoke
+$ curl -d '{"pdf_url":"https://test-bucket.oss-cn-hangzhou.aliyuncs.com/test2.pdf"}' http://pdf2jpg.pdf2img.1986114430573743.cn-beijing.fc.devsapp.net > test.zip
 ```
 
-可以查看目录`.s/tmp/local/pdf2jpg/ghostscript/images`下的图片查看效果
+-----
 
-### 部署
-
-```bash
-s deploy    
-```
-
-### 云端调用
-
-``` bash
-s invoke
-```
-
-## 参考
-- [awesome-fc/ghostscript_example: 基于 GhostScript 的 PDF 转 JPG Serverless 示例项目](https://github.com/awesome-fc/ghostscript_example)
-- [Node module - pdf2pic](https://www.npmjs.com/package/pdf2pic)
-
+> - Serverless Devs 项目：https://www.github.com/serverless-devs/serverless-devs   
+> - Serverless Devs 文档：https://www.github.com/serverless-devs/docs   
+> - Serverless Devs 钉钉交流群：33947367    

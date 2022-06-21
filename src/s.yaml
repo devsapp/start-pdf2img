@@ -38,7 +38,7 @@ services:
         codeUri: ./code
         handler: index.handler
         memorySize: 1024
-        runtime: python3
+        runtime: python3.9
         timeout: 120
       triggers:
         - name: httpTrigger

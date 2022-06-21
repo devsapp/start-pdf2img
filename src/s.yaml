@@ -40,6 +40,8 @@ services:
         memorySize: 1024
         runtime: python3.9
         timeout: 120
+        environmentVariables:
+          PATH: /code/bin
       triggers:
         - name: httpTrigger
           type: http

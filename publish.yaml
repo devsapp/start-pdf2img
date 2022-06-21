@@ -2,7 +2,7 @@ Type: Application
 Name: start-pdf2img
 Provider:
   - 阿里云
-Version: 1.1.6
+Version: 1.1.7
 Description: 将PDF转换为JPG图片
 HomePage: https://github.com/devsapp/start-pdf2img
 Tags: 
@@ -11,7 +11,6 @@ Category: 图文处理
 Service:
   函数计算:
     Authorities:
-      - AliyunFCInvocationAccess
       - AliyunFCFullAccess
 Parameters:
   type: object

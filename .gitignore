@@ -146,4 +146,4 @@ dist
 
 # End of https://www.toptal.com/developers/gitignore/api/yarn,node,npm
 n
-!src/code/.s
+.DS_Store

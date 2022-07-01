@@ -20,6 +20,7 @@ vars: # 全局变量
   region: "{{ region }}"
   service:
     name: "{{ serviceName }}"
+    role: "{{ roleArn }}"
     description: 'PDF转IMG工具'
 
 services:
@@ -39,20 +40,6 @@ services:
         handler: index.handler
         memorySize: 1024
         runtime: python3.9
-        timeout: 120
+        timeout: 600
         environmentVariables:
           PATH: /code/bin
-      triggers:
-        - name: httpTrigger
-          type: http
-          config:
-            authType: anonymous
-            methods:
-              - GET
-              - POST
-              - PUT
-      customDomains:
-        - domainName: auto
-          protocol: HTTP
-          routeConfigs:
-            - path: /*

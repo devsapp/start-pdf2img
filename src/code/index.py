@@ -5,6 +5,7 @@ import json
 import subprocess
 import zipfile
 import os
+import oss2
 
 
 '''
@@ -22,24 +23,20 @@ def make_zip(zipFileName, dirpath):
                         os.path.join(fpath, filename))
 
 
-def handler(environ, start_response):
-    # get request_body
-    try:
-        request_body_size = int(environ.get('CONTENT_LENGTH', 0))
-    except (ValueError):
-        request_body_size = 0
-    request_body = environ['wsgi.input'].read(request_body_size)
+def handler(event, context):
+    evt = json.loads(event)
+    creds = context.credentials
+    auth = oss2.StsAuth(creds.access_key_id,
+                        creds.access_key_secret, creds.security_token)
+    bucketName = evt['bucket']
+    region = evt.get('region', context.region)
+    endpoint = "oss-{}.aliyuncs.com".format(region)
+    if region == context.region:  # use internal endpoint
+        endpoint = "oss-{}-internal.aliyuncs.com".format(region)
 
-    try:
-        subprocess.check_call("rm -rf /tmp/test/images", shell=True)
-        subprocess.check_call("rm -rf /tmp/test.zip", shell=True)
-    except:
-        pass
-
-    evt = json.loads(request_body)
-    pdf_url = evt['pdf_url']
-    subprocess.check_call(
-        "wget -O /tmp/test.pdf {}".format(pdf_url), shell=True)
+    bucket = oss2.Bucket(auth, endpoint, bucketName)
+    object = evt['src_object']
+    bucket.get_object_to_file(object, '/tmp/test.pdf')
 
     subprocess.check_call("mkdir -p /tmp/images", shell=True)
 
@@ -53,13 +50,10 @@ def handler(environ, start_response):
     make_zip("/tmp/test.zip", "/tmp/images")
 
     subprocess.check_call("ls -lh /tmp/images", shell=True)
+    dst_object = evt['dst_object']
+    if not dst_object.endswith('.zip'):
+        return "dest object name must be zip file, for example: test.zip"
 
-    data = b''
-    with open('/tmp/test.zip', 'rb') as f:
-        data = f.read()
+    bucket.put_object_from_file(dst_object, '/tmp/test.zip')
 
-    status = '200 OK'
-    response_headers = [('Content-type', 'application/octet-stream')]
-    start_response(status, response_headers)
-
-    return [data]
+    return 'SUCC'

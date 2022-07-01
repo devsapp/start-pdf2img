@@ -60,16 +60,21 @@
 
 通过 Serverless Devs 开发者工具，您只需要几步，就可以体验 Serverless 架构，带来的降本提效的技术红利。
 
-部署完成之后，您可以看到系统返回给您的案例地址，例如：
-
-![图片alt](https://img.alicdn.com/imgextra/i2/O1CN01FAltos1wqTJpEkTTR_!!6000000006359-2-tps-1776-584.png)
-
-此时，可以 curl 调用函数， 然后可以得到一个 zip 包， zip 包里面是 pdf 每页截图的 jpg 文件
+部署完成之后，您可以使用 s 工具或者 SDK 调用函数，函数执行成功后， 就可以在 OSS 指定目标目录中得到一个 zip 包， zip 包里面是 pdf 每页截图的 jpg 文件
 
 ```bash
-$ curl -d '{"pdf_url":"https://test-bucket.oss-cn-hangzhou.aliyuncs.com/test2.pdf"}' http://pdf2jpg.pdf2img.1986114430573743.cn-beijing.fc.devsapp.net > test.zip
+$ s invoke -e '{"bucket": "my-bucket", "region": "cn-hangzhou", "src_object": "test.pdf",  "src_object": "test.zip"}'
 ```
 
+其中：
+
+- **bucket**: 必需，pdf 文件所在的 bucket 名字
+
+- **region**: 可选，pdf 文件所在的 bucket 的 region, 不填默认使用函数所在的 region
+
+- **src_object**: 必需，pdf 文件所在的 bucket 中的 object key
+
+- **src_object**: 必需，必须是 .zip 结尾,  pdf 文件转成图片后的 zip 包所在的 object key
 
 </appdetail>
 

@@ -2,7 +2,7 @@ Type: Application
 Name: start-pdf2img
 Provider:
   - 阿里云
-Version: 1.1.7
+Version: 1.1.8
 Description: 将PDF转换为JPG图片
 HomePage: https://github.com/devsapp/start-pdf2img
 Tags: 
@@ -19,6 +19,7 @@ Parameters:
     - region
     - serviceName
     - functionName
+    - roleArn
   properties:
     region:
       title: 地域
@@ -55,3 +56,16 @@ Parameters:
       type: string
       default: pdf2jpg
       description: 应用的函数名称
+    roleArn:
+      title: RAM角色ARN
+      type: string
+      default: ''
+      pattern: '^acs:ram::[0-9]*:role/.*$'
+      description: 应用所属的函数计算服务配置的 role
+      required: true
+      x-role:
+        name: fcossrole
+        service: fc
+        authorities:
+          - AliyunOSSFullAccess
+          - AliyunFCDefaultRolePolicy

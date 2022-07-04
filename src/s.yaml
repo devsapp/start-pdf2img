@@ -28,8 +28,15 @@ services:
     component:  fc
     actions:
      pre-deploy:
-       - run: s build --use-docker
-         path: ./
+        - run: wget http://devsapp.functioncompute.com/devsapp/poppler20.0.9-pdf2image.zip -O /tmp/poppler20.0.9-pdf2image.zip
+          path: ./
+        - plugin: layer-fc
+          args:
+            name: poppler20
+            codeUri: /tmp/poppler20.0.9-pdf2image.zip
+            #forceUpdate: true
+            runtime:
+              - python3.9
     props: # 组件的属性值
       region: ${vars.region}
       service: ${vars.service}
@@ -42,4 +49,4 @@ services:
         runtime: python3.9
         timeout: 600
         environmentVariables:
-          PATH: /code/bin
+          FONTCONFIG_PATH: /opt/etc/fonts.conf

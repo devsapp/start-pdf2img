@@ -28,12 +28,10 @@ services:
     component:  fc
     actions:
      pre-deploy:
-        - run: wget http://devsapp.functioncompute.com/devsapp/poppler20.0.9-pdf2image.zip -O /tmp/poppler20.0.9-pdf2image.zip
-          path: ./
         - plugin: layer-fc
           args:
             name: poppler20
-            codeUri: /tmp/poppler20.0.9-pdf2image.zip
+            codeUri: http://devsapp.functioncompute.com/devsapp/poppler20.0.9-pdf2image.zip
             #forceUpdate: true
             runtime:
               - python3.9

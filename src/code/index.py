@@ -7,6 +7,8 @@ import zipfile
 import os
 import oss2
 
+from PIL import Image
+Image.MAX_IMAGE_PIXELS = 1000000000
 
 '''
 convert_from_path(pdf_path, dpi=200, output_folder=None, first_page=None, last_page=None, fmt='ppm', jpegopt=None, thread_count=1, userpw=None, use_cropbox=False, strict=False,
@@ -41,7 +43,7 @@ def handler(event, context):
     subprocess.check_call("mkdir -p /tmp/images", shell=True)
 
     pdf_name = "/tmp/test.pdf"
-    pages = convert_from_path(pdf_name)
+    pages = convert_from_path(pdf_name, dpi=evt.get("dpi", 200))
     for i, page in enumerate(pages):
         jpg_name = "/tmp/images/test_{}.jpg".format(i)
         page.save(jpg_name, 'JPEG')

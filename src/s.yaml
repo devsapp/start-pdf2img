@@ -43,7 +43,7 @@ services:
         description: 
         codeUri: ./code
         handler: index.handler
-        memorySize: 1024
+        memorySize: 3072
         runtime: python3.9
         timeout: 600
         environmentVariables:

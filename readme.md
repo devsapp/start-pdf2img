@@ -63,7 +63,7 @@
 部署完成之后，您可以使用 s 工具或者 SDK 调用函数，函数执行成功后， 就可以在 OSS 指定目标目录中得到一个 zip 包， zip 包里面是 pdf 每页截图的 jpg 文件
 
 ```bash
-$ s invoke -e '{"bucket": "my-bucket", "region": "cn-hangzhou", "src_object": "test.pdf",  "dst_object": "test.zip"}'
+$ s invoke -e '{"bucket": "my-bucket", "region": "cn-hangzhou", "src_object": "test.pdf",  "dst_object": "test.zip", "dpi": 200}'
 ```
 
 其中：
@@ -75,6 +75,8 @@ $ s invoke -e '{"bucket": "my-bucket", "region": "cn-hangzhou", "src_object": "t
 - **src_object**: 必需，pdf 文件所在的 bucket 中的 object key
 
 - **src_object**: 必需，必须是 .zip 结尾,  pdf 文件转成图片后的 zip 包所在的 object key
+
+- **dpi**: 可选，默认值为200,  pdf 转的 image 的 DPI（图像每英寸长度内的像素点数）
 
 </appdetail>
 

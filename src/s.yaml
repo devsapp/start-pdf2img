@@ -30,7 +30,7 @@ services:
      pre-deploy:
         - plugin: layer-fc
           args:
-            name: poppler20.0.9
+            name: poppler20-0-9
             codeUri: http://devsapp.functioncompute.com/devsapp/poppler20.0.9-pdf2image.zip
             #forceUpdate: true
             runtime:

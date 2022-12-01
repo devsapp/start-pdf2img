@@ -30,7 +30,7 @@ services:
      pre-deploy:
         - plugin: layer-fc
           args:
-            name: poppler20
+            name: poppler20.0.9
             codeUri: http://devsapp.functioncompute.com/devsapp/poppler20.0.9-pdf2image.zip
             #forceUpdate: true
             runtime:
@@ -47,4 +47,4 @@ services:
         runtime: python3.9
         timeout: 600
         environmentVariables:
-          FONTCONFIG_PATH: /opt/etc/fonts.conf
+          FONTCONFIG_FILE: /opt/etc/fonts.conf

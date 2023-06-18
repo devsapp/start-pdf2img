@@ -2,10 +2,10 @@ Type: Application
 Name: start-pdf2img
 Provider:
   - 阿里云
-Version: 1.2.7
+Version: 1.2.8
 Description: 将PDF转换为JPG图片
 HomePage: https://github.com/devsapp/start-pdf2img
-Tags: 
+Tags:
   - 文件处理
 Category: 图文处理
 Service:
@@ -61,9 +61,11 @@ Parameters:
     roleArn:
       title: RAM角色ARN
       type: string
-      default: ''
-      pattern: '^acs:ram::[0-9]*:role/.*$'
-      description: 应用所属的函数计算服务配置的 role
+      default: ""
+      pattern: "^acs:ram::[0-9]*:role/.*$"
+      description: "函数计算访问其他云服务时使用的服务角色，需要填写具体的角色ARN，格式为acs:ram::$account-id>:role/$role-name。例如：acs:ram::14310000000:role/aliyunfcdefaultrole。
+      \n如果您没有特殊要求，可以使用函数计算提供的默认的服务角色，即AliyunFCDefaultRole, 并增加 AliyunOSSFullAccess 权限。如果您首次使用函数计算，可以访问 https://fcnext.console.aliyun.com 进行授权。
+      \n详细文档参考 https://help.aliyun.com/document_detail/181589.html#section-o93-dbr-z6o"
       required: true
       x-role:
         name: fcossrole

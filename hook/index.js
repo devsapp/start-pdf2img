@@ -14,6 +14,9 @@ async function postInit(inputObj) {
      This application requires to open these services: 
          FC : https://fc.console.aliyun.com/
      
+     Tips：
+         - FC3 Component: https://docs.serverless-devs.com/user-guide/aliyun/#fc3
+         
      * 额外说明：
      * 进行项目之后，可使用 s deploy 进行项目部署
      * 可以通过invoke命令进行相关的触发：s invoke\n`)

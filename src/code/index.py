@@ -57,5 +57,5 @@ def handler(event, context):
         return "dest object name must be zip file, for example: test.zip"
 
     bucket.put_object_from_file(dst_object, '/tmp/test.zip')
-
-    return 'SUCC'
+    print("'SUCC'")
+    return {"code": "Success"}

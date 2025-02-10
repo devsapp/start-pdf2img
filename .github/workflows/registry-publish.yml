@@ -3,7 +3,7 @@ name: publish package to registry
 on:
   push:
     branches:
-      - V3
+      - dipper
 
 jobs:
   release:

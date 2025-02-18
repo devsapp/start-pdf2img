@@ -53,7 +53,7 @@
 
 <appdetail id="flushContent">
 
-本案例是将 pdf 转 img的逻辑封装成一个python函数，快速创建并部署到阿里云函数计算 FC。
+本案例是将 pdf 转 img的逻辑封装成一个python函数，快速创建并部署到云原生应用开发平台 CAP。
 
 运用了pdf2image 这一个 Python 库，专门用于将 PDF 文件转换为图像。这个库为 PDF 到图像的转换提供了简单的接口，并依赖于流行的开源软件 Poppler 工具进行实际的转换过程。
 
@@ -122,6 +122,8 @@ $ s invoke -e '{"bucket": "my-bucket", "region": "cn-hangzhou", "src_object": "t
 <development id="flushContent">
 
 您可以通过云端控制台 webIDE 的开发功能进行二次开发。
+
+也可以在初始化项目时，需要绑定代码仓库，CAP平台会自动配置代码仓库的Webhook。当仓库对应的分支有任何提交时，CAP平台会收到Webhook推送，并自动完成构建与部署。
 
 </development>
 
